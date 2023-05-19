@@ -3,11 +3,17 @@ import './App.css'
 import Navbar from "./Navbar";
 import MovieCard from './MovieCard'
 import {data} from './data'
+//import  addMovies from '../actions';
+import { ADD_MOVIES } from '../actions';
+
+
+
 
 class App extends React.Component{
  
 
   componentDidMount(){
+   
     const {store}=this.props
     //subscrbe called
 
@@ -20,12 +26,17 @@ class App extends React.Component{
 
     //dispatch action
     store.dispatch(
+      //addMovies(data)
       {
         type:'ADD_MOVIES',
         movies:data
       }
+      
+
+     
     )
-    console.log("state_APP.js",this.props.store.getState())
+    
+    //console.log("state_APP.js",this.props.store.getState())
     
   }
 
@@ -46,8 +57,10 @@ class App extends React.Component{
         
 
         <div className="list">
+         
           {
             movie.map((movie,index)=>{
+              console.log("Movie",movie)
             
               return  <MovieCard movie={movie} key={`movie- ${index}`}/>
             })
